@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.img-box {
+  position: absolute;
+  border: 0.5px solid lightgray;
+  background-color: rgb(105, 96, 96);
+  aspect-ratio: 3 / 4;
+  transition:
+    background-color 1s ease,
+    width 1s ease,
+    height 1s ease,
+    top 1s ease,
+    left 1s ease,
+    transform 0.5s ease;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Hover effect to zoom the image box without shifting position */
+.img-box:hover {
+  transform: scale(1.5); /* Zoom effect */
+  z-index: 10; /* Bring to front */
+  transform-origin: center; /* Keep the zoom around the center of the box */
+}
+
+/* Centered countdown */
+.countdown {
+  position: fixed; /* Fix the countdown */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  gap: 10px; /* Space between title and timer */
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.0); /* transparent */
+  padding: 10px 40px;
+  border-radius: 10px;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  min-width: 90px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  align-items: center;
+}
+
+.countdown h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.timer {
+  display: flex;
+  gap: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-wrap: nowrap; /* Ensure countdown stays in a single line */
+}
+
+.timer div {
+  text-align: center;
+  padding: 5px 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .img-box {
+    transform: scale(0.85);
+  }
+
+  .countdown {
+    font-size: 1rem;
+    padding: 8px 20px;
+    gap: 10px;
+    flex-wrap: nowrap; /* Ensure countdown stays in a single line on small screens */
+  }
+
+  .timer {
+    font-size: 1rem; /* Adjust font size for mobile */
+    gap: 10px; /* Reduce space between elements */
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 601px) {
+  .img-box {
+    transform: scale(0.95);
+  }
+
+  .countdown {
+    font-size: 1.3rem;
+    padding: 10px 30px;
+  }
+}
